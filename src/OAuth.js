@@ -155,7 +155,8 @@ export default class OAuth extends events.EventEmitter {
     query.client_id = this._userConfig.oauth.key;
     query.state = u.thisOrThat(state, Math.ceil(Math.random() * 1000));
     query.redirect_uri = this._userConfig.oauth.redirectUri;
-    query.response_type = 'token';
+    query.duration = this._userConfig.oauth.duration;
+    query.response_type = 'code';
     query.scope = this.scope;
 
     let baseUrl = `https://${this._userConfig.serverWWW}/api/v1/authorize`;
